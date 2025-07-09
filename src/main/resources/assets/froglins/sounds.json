@@ -1,0 +1,33 @@
+{
+
+
+  "froglin_ambient": {
+    "subtitles": "sounds.froglins.froglin_ambient",
+    "sounds":[
+      "froglins:froglin_ambient1",
+      "froglins:froglin_ambient2",
+      "froglins:froglin_ambient3"
+    ]
+  },
+
+
+  "froglin_hurt": {
+    "subtitles": "sounds.froglins.froglin_hurt",
+    "sounds":[
+      "froglins:froglin_hurt1",
+      "froglins:froglin_hurt2"
+    ]
+  },
+
+
+  "froglin_death": {
+    "subtitles": "sounds.froglins.froglin_death",
+    "sounds":[
+      "froglins:froglin_death1",
+      "froglins:froglin_death2"
+    ]
+  }
+
+
+
+}
