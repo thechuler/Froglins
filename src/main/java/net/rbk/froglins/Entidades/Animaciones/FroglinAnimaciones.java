@@ -273,4 +273,35 @@ public class FroglinAnimaciones {
                             new Keyframe(1.5f, KeyframeAnimations.degreeVec(0f, 0f, 0f),
                                     AnimationChannel.Interpolations.LINEAR))).build();
 
+    public static final AnimationDefinition ATTACK = AnimationDefinition.Builder.withLength(1f).looping()
+            .addAnimation("BrazoIzq",
+                    new AnimationChannel(AnimationChannel.Targets.POSITION,
+                            new Keyframe(0f, KeyframeAnimations.posVec(0f, -3f, 0f),
+                                    AnimationChannel.Interpolations.LINEAR)))
+            .addAnimation("BrazoIzq",
+                    new AnimationChannel(AnimationChannel.Targets.ROTATION,
+                            new Keyframe(0f, KeyframeAnimations.degreeVec(-84.76f, 17.43f, 1.57f),
+                                    AnimationChannel.Interpolations.LINEAR)))
+            .addAnimation("BrazoDer",
+                    new AnimationChannel(AnimationChannel.Targets.POSITION,
+                            new Keyframe(0f, KeyframeAnimations.posVec(0f, -3f, 0f),
+                                    AnimationChannel.Interpolations.LINEAR)))
+            .addAnimation("BrazoDer",
+                    new AnimationChannel(AnimationChannel.Targets.ROTATION,
+                            new Keyframe(0f, KeyframeAnimations.degreeVec(-84.76f, -17.43f, -1.57f),
+                                    AnimationChannel.Interpolations.LINEAR)))
+            .addAnimation("Cabeza",
+                    new AnimationChannel(AnimationChannel.Targets.ROTATION,
+                            new Keyframe(0f, KeyframeAnimations.degreeVec(22.5f, 0f, 0f),
+                                    AnimationChannel.Interpolations.LINEAR)))
+            .addAnimation("mandibulasup",
+                    new AnimationChannel(AnimationChannel.Targets.ROTATION,
+                            new Keyframe(0f, KeyframeAnimations.degreeVec(-32.5f, 0f, 0f),
+                                    AnimationChannel.Interpolations.LINEAR),
+                            new Keyframe(0.4167667f, KeyframeAnimations.degreeVec(2.5f, 0f, 0f),
+                                    AnimationChannel.Interpolations.LINEAR),
+                            new Keyframe(0.625f, KeyframeAnimations.degreeVec(-30f, 0f, 0f),
+                                    AnimationChannel.Interpolations.LINEAR))).build();
+
+
 }

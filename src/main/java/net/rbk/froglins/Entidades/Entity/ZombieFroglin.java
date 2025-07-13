@@ -1,5 +1,6 @@
 package net.rbk.froglins.Entidades.Entity;
 
+
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.Difficulty;
@@ -17,17 +18,18 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.WaterAnimal;
+import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.item.ItemStack;
+
 import net.minecraft.world.level.Level;
+
 import net.rbk.froglins.Sonidos.ModSounds;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
-public class ZombieFroglin extends AbstractFroglin{
-
-
+public class ZombieFroglin extends AbstractFroglin  {
 
 
     public ZombieFroglin(EntityType<? extends Animal> entityType, Level level) {
@@ -41,8 +43,10 @@ public class ZombieFroglin extends AbstractFroglin{
                 .add(Attributes.MAX_HEALTH, 10.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.2)
                 .add(Attributes.ATTACK_DAMAGE, 2.5)
-                .add(Attributes.FOLLOW_RANGE,100);
+                .add(Attributes.FOLLOW_RANGE,100)
+                .add(Attributes.STEP_HEIGHT,2); 
     }
+
 
 
 
@@ -59,13 +63,17 @@ public class ZombieFroglin extends AbstractFroglin{
 
 
 
+
+
     //cambiar efecto y agregar probabilidad
     @Override
     public boolean doHurtTarget(Entity pEntity) {
+
         if(!this.level().isClientSide()&& pEntity instanceof LivingEntity){
             ((LivingEntity) pEntity).addEffect(new MobEffectInstance(MobEffects.WEAKNESS,200));
         }
         return super.doHurtTarget(pEntity);
+
     }
 
 
@@ -76,6 +84,8 @@ public class ZombieFroglin extends AbstractFroglin{
 
         super.tick();
     }
+
+
 
     private void rageOnNight() {
         double nuevaVelocidad = this.level().isDay() ? 0.2 : 0.6;
@@ -96,19 +106,19 @@ public class ZombieFroglin extends AbstractFroglin{
     //------------------------------------SONIDOS---------------------------//
     @Override
     public SoundEvent GetRugidoSound() {
-        return ModSounds.FROGLIN_AMBIENT.get();
+        return ModSounds.ZOMBIE_FROGLIN_AMBIENT.get();
     }
 
     @Override
     protected SoundEvent getHurtSound(@NotNull DamageSource pDamageSource) {
-        return ModSounds.FROGLIN_HURT.get();
+        return ModSounds.ZOMBIE_FROGLIN_HURT.get();
     }
 
 
     @Nullable
     @Override
     protected SoundEvent getDeathSound() {
-        return ModSounds.FROGLIN_DEATH.get();
+        return ModSounds.ZOMBIE_FROGLIN_DEATH.get();
     }
 
 

@@ -80,6 +80,6 @@ public class FroglinModel<T extends AbstractFroglin> extends HierarchicalModel<T
 		this.animateWalk(FroglinAnimaciones.CAMINAR, v, v1, 4f, 2.5f);
 		this.animate(((AbstractFroglin) t).idleAnimationState, FroglinAnimaciones.IDLE, v2, 1f);
 		this.animate(((AbstractFroglin) t).gruñirAnimationState, FroglinAnimaciones.GRUÑIDO, v2, 1f);
-
+		this.animate(((AbstractFroglin) t).attackAnimationState, FroglinAnimaciones.ATTACK, v2, 1f);
 	}
 }

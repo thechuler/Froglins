@@ -2,18 +2,17 @@ package net.rbk.froglins.Item;
 
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
+
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.rbk.froglins.Entidades.ModEntities;
 import net.rbk.froglins.Froglins;
+import net.rbk.froglins.Sonidos.ModSounds;
 
-import java.util.function.Supplier;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Froglins.MODID);
@@ -36,7 +35,8 @@ public class ModItems {
             () -> new DeferredSpawnEggItem(ModEntities.ZOMBIE_FROGLIN,0x428430,0xa8a84e,new Item.Properties()));
 
 
-
+    public static final DeferredItem<Item> DISCODELPAPU = ITEMS.register("discodelpapu",
+            () -> new Item(new Item.Properties().jukeboxPlayable(ModSounds.YSYA_KEY).stacksTo(64).food(new FoodProperties.Builder().nutrition(10).saturationModifier(8).build())));
 
 
 

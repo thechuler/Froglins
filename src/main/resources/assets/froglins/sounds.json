@@ -26,8 +26,58 @@
       "froglins:froglin_death1",
       "froglins:froglin_death2"
     ]
+  },
+
+
+
+  "zombie_froglin_ambient": {
+    "subtitles": "sounds.froglins.zombie_froglin_ambient",
+    "sounds":[
+      "froglins:froglin_zombie_ambient1",
+      "froglins:froglin_zombie_ambient2",
+      "froglins:froglin_zombie_ambient3",
+      "froglins:froglin_zombie_ambient4",
+      "froglins:froglin_zombie_ambient5"
+    ]
+  },
+
+
+  "zombie_froglin_hurt": {
+    "subtitles": "sounds.froglins.zombie_froglin_hurt",
+    "sounds":[
+      "froglins:froglin_zombie_hurt1",
+      "froglins:froglin_zombie_hurt2",
+      "froglins:froglin_zombie_hurt3"
+    ]
+  },
+
+
+  "zombie_froglin_death": {
+    "subtitles": "sounds.froglins.zombie_froglin_death",
+    "sounds":[
+      "froglins:froglin_zombie_death1",
+      "froglins:froglin_zombie_death2"
+    ]
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+  "ysya": {
+"sounds": [
+  {
+    "name": "froglins:ysya",
+    "stream":true
   }
-
-
-
+]
+  }
 }

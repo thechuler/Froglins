@@ -1,15 +1,21 @@
 package net.rbk.froglins.Entidades.Entity;
 
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BiomeTags;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.EntityType;
 
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -17,11 +23,16 @@ public abstract class AbstractFroglin extends Animal {
 
     public static final EntityDataAccessor<Boolean> RUGIR = SynchedEntityData.defineId(AbstractFroglin.class, EntityDataSerializers.BOOLEAN);
     public static EntityDataAccessor<Integer> VARIANTE = SynchedEntityData.defineId(AbstractFroglin.class, EntityDataSerializers.INT);
+    public static final EntityDataAccessor<Boolean> ATACAR = SynchedEntityData.defineId(AbstractFroglin.class, EntityDataSerializers.BOOLEAN);
+
+
 
     public final AnimationState idleAnimationState = new AnimationState();
+    public final AnimationState attackAnimationState = new AnimationState();
     public final AnimationState gruñirAnimationState = new AnimationState();
     private int idleAnimationTimeout = 0;
     private int  rugidoAnimationTimeout = 0;
+    private boolean animarAtaque;
 
 
 
@@ -31,7 +42,25 @@ public abstract class AbstractFroglin extends Animal {
 
 
 
+    @Override
+    public void addAdditionalSaveData(@NotNull CompoundTag pCompound) {
+        super.addAdditionalSaveData(pCompound);
+        pCompound.putInt("variante", getVariante());
+    }
 
+    @Override
+    public void readAdditionalSaveData(@NotNull CompoundTag pCompound) {
+        super.readAdditionalSaveData(pCompound);
+        setVariante(pCompound.getInt("variante"));
+    }
+
+    public void setVariante(int variante) {
+        this.entityData.set(VARIANTE, variante);
+    }
+
+    public int getVariante() {
+        return this.entityData.get(VARIANTE);
+    }
 
 
 
@@ -41,6 +70,7 @@ public abstract class AbstractFroglin extends Animal {
     protected void defineSynchedData(SynchedEntityData.@NotNull Builder builder) {
         super.defineSynchedData(builder);
         builder.define(RUGIR, false);
+        builder.define(ATACAR, false);
         builder.define(VARIANTE, 0);
     }
 
@@ -58,17 +88,44 @@ public abstract class AbstractFroglin extends Animal {
 
 
 
+
     @Override
     public void tick() {
         if(this.level().isClientSide()){
             setUpAnimationStates();
             ManageRugido();
+           ManageAtaque();
+        } else {
+            boolean shouldAttack = this.getTarget() != null && this.distanceTo(this.getTarget()) < 5.5F;
+
+            if (shouldAttack != getData(ATACAR)) {
+                setData(ATACAR, shouldAttack);
+            }
         }
+
+
+
         super.tick();
     }
 
 
 
+
+
+
+
+
+    private void ManageAtaque(){
+        boolean atacar = getData(ATACAR);
+
+        if (atacar && !animarAtaque) {
+            animarAtaque = true;
+            attackAnimationState.start(this.tickCount);
+        } else if (!atacar && animarAtaque) {
+            animarAtaque = false;
+            attackAnimationState.stop();
+        }
+    }
 
 
 //Logica Rugido (Animacion)

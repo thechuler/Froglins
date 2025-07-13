@@ -1,8 +1,6 @@
 package net.rbk.froglins.Entidades.Entity;
 
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -43,7 +41,9 @@ public class Froglin extends AbstractFroglin {
                 .add(Attributes.MAX_HEALTH, 10.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.4)
                 .add(Attributes.ATTACK_DAMAGE, 4.5)
-                .add(Attributes.FOLLOW_RANGE,20);
+                .add(Attributes.FOLLOW_RANGE,20)
+                .add(Attributes.STEP_HEIGHT,1.5);
+
     }
 
 
@@ -91,25 +91,7 @@ public class Froglin extends AbstractFroglin {
     }
 
 
-    @Override
-    public void addAdditionalSaveData(@NotNull CompoundTag pCompound) {
-        super.addAdditionalSaveData(pCompound);
-        pCompound.putInt("variante", getVariante());
-    }
 
-    @Override
-    public void readAdditionalSaveData(@NotNull CompoundTag pCompound) {
-        super.readAdditionalSaveData(pCompound);
-        setVariante(pCompound.getInt("variante"));
-    }
-
-    public void setVariante(int variante) {
-        this.entityData.set(VARIANTE, variante);
-    }
-
-    public int getVariante() {
-        return this.entityData.get(VARIANTE);
-    }
 
 
 

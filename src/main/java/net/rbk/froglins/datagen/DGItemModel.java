@@ -16,6 +16,7 @@ public class DGItemModel extends ItemModelProvider {
 
         basicItem(ModItems.RAW_FROG_MEAT.get());
         basicItem(ModItems.COOKED_FROG_MEAT.get());
+        basicItem(ModItems.DISCODELPAPU.get());
         withExistingParent(ModItems.FROGLIN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.ZOMBIE_FROGLIN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
     }

@@ -1,6 +1,8 @@
 package net.rbk.froglins;
 
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.world.effect.MobEffects;
+import net.rbk.froglins.Efectos.ModEffects;
 import net.rbk.froglins.Entidades.ModEntities;
 import net.rbk.froglins.Entidades.Modelos.FroglinModel;
 import net.rbk.froglins.Entidades.Renders.FroglinRender;
@@ -41,6 +43,7 @@ public class Froglins {
         NeoForge.EVENT_BUS.register(this);
 
         ModItems.registrar(modEventBus);
+        ModEffects.registrar(modEventBus);
         CreativeTab.registrar(modEventBus);
         ModEntities.registrar(modEventBus);
         ModSounds.register(modEventBus);

@@ -12,7 +12,7 @@ import net.rbk.froglins.Froglins;
 
 public class ZombieFroglinEyesRender <T extends AbstractFroglin> extends EyesLayer<T,FroglinModel<T>>  {
 
-    private static final ResourceLocation EYE_TEXTURE = ResourceLocation.fromNamespaceAndPath(Froglins.MODID, "textures/entity/froglin/zombie_froglineyes.png");
+    private static final ResourceLocation EYE_TEXTURE = ResourceLocation.fromNamespaceAndPath(Froglins.MODID, "textures/entity/zombie_froglin/zombie_froglineyes.png");
     private static final RenderType EYE_RENDER_TYPE = RenderType.eyes(EYE_TEXTURE);
 
     public ZombieFroglinEyesRender(RenderLayerParent<T, FroglinModel<T>> renderer) {
