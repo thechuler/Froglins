@@ -1,5 +1,19 @@
 {
-  "itemGroup.examplemod": "Example Mod Tab",
-  "block.examplemod.example_block": "Example Block",
-  "item.examplemod.example_item": "Example Item"
+  "creativetab.froglins": "Froglins!",
+  "item.froglins.viscosity": "Viscosity",
+  "item.froglins.harmful_viscosity": "Harmful Viscosity",
+  "item.froglins.raw_frog_meat": "Raw Frog Meat",
+  "item.froglins.cooked_frog_meat": "Cooked Frog Meat",
+  "item.froglins.raw_frog_brochette": "Raw Frog Brochette",
+  "item.froglins.cooked_frog_brochette": "Cooked Frog Brochette",
+  "item.froglins.heavy_horn": "Heavy Horn",
+
+
+  "entity.froglins.zombie_froglin": "Zombie Froglin",
+  "entity.froglins.froglin": "Froglin",
+  "item.froglins.zombie_froglin_spawn_egg": "Zombie Froglin Spawn Egg",
+  "item.froglins.froglin_spawn_egg": "Froglin Spawn Egg",
+  "item.froglins.crusher": "Crusher",
+  "tooltip.froglins.harmful_viscosity": "Mixed with:"
+
 }

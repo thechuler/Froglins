@@ -32,6 +32,10 @@ public class ModSounds {
     public static final Supplier<SoundEvent> ZOMBIE_FROGLIN_DEATH = registerSoundEvent("zombie_froglin_death");
 
 
+    public static final Supplier<SoundEvent> WOOLLY_FROGLIN_AMBIENT = registerSoundEvent("woolly_froglin_ambient");
+
+
+
 
 
     public static final Supplier<SoundEvent> YSYA = registerSoundEvent("ysya");

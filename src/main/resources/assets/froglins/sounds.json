@@ -62,6 +62,12 @@
 
 
 
+  "woolly_froglin_ambient": {
+    "subtitles": "sounds.froglins.woolly_froglin_ambient1",
+    "sounds":[
+      "froglins:woolly_froglin_ambient1"
+    ]
+  },
 
 
 

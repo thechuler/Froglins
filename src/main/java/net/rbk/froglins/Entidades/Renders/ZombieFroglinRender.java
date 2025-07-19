@@ -26,9 +26,17 @@ public class ZombieFroglinRender extends MobRenderer<AbstractFroglin, FroglinMod
     }
 
 
+    @Override
+    public void render(AbstractFroglin entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
+        if(entity.isBaby()) {
+            poseStack.scale(0.6f, 0.6f, 0.6f);
+        } else {
+            poseStack.scale(1f, 1f, 1f);
+        }
+        super.render( entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
 
-
-
+        super.render(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
+    }
 
     @Override
     public @NotNull ResourceLocation getTextureLocation(@NotNull AbstractFroglin abstractFroglin) {

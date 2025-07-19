@@ -1,8 +1,11 @@
 package net.rbk.froglins.Entidades.Entity;
 
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -23,13 +26,16 @@ import net.minecraft.world.item.ItemStack;
 
 import net.minecraft.world.level.Level;
 
+import net.minecraft.world.level.LevelAccessor;
+import net.rbk.froglins.Efectos.ModEffects;
+import net.rbk.froglins.Otros.Utilidades;
 import net.rbk.froglins.Sonidos.ModSounds;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
-public class ZombieFroglin extends AbstractFroglin  {
+public class ZombieFroglin extends AbstractFroglin implements Enemy {
 
 
     public ZombieFroglin(EntityType<? extends Animal> entityType, Level level) {
@@ -43,7 +49,7 @@ public class ZombieFroglin extends AbstractFroglin  {
                 .add(Attributes.MAX_HEALTH, 10.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.2)
                 .add(Attributes.ATTACK_DAMAGE, 2.5)
-                .add(Attributes.FOLLOW_RANGE,100)
+                .add(Attributes.FOLLOW_RANGE,50)
                 .add(Attributes.STEP_HEIGHT,2); 
     }
 
@@ -88,7 +94,7 @@ public class ZombieFroglin extends AbstractFroglin  {
 
 
     private void rageOnNight() {
-        double nuevaVelocidad = this.level().isDay() ? 0.2 : 0.6;
+        double nuevaVelocidad = this.level().isDay() ? 0.2 : 0.4;
         double nuevoDaño = this.level().isDay() ? 2.5 : 5.5;
 
         if (Objects.requireNonNull(this.getAttribute(Attributes.MOVEMENT_SPEED)).getBaseValue() != nuevaVelocidad) {
@@ -102,6 +108,13 @@ public class ZombieFroglin extends AbstractFroglin  {
     }
 
 
+    @Override
+    public boolean canBeAffected(MobEffectInstance effectInstance) {
+        if (effectInstance.getEffect() == ModEffects.INFECTION) {
+            return false;
+        }
+        return super.canBeAffected(effectInstance);
+    }
 
     //------------------------------------SONIDOS---------------------------//
     @Override
@@ -145,5 +158,12 @@ public class ZombieFroglin extends AbstractFroglin  {
     @Override
     public @Nullable AgeableMob getBreedOffspring(@NotNull ServerLevel serverLevel, @NotNull AgeableMob ageableMob) {
         return null;
+    }
+
+
+
+    public static boolean checkZombieFroglinSpawnRules(EntityType<? extends Mob> type, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
+        boolean flag = MobSpawnType.ignoresLightRequirements(spawnType) || level.dayTime() % 24000L >= 13000 && level.dayTime() % 24000L <= 13000 ;
+        return level.getBlockState(pos.below()).is(BlockTags.ANIMALS_SPAWNABLE_ON) && flag;
     }
 }

@@ -30,7 +30,11 @@ public class EntityLootTable extends EntityLootSubProvider {
                         .setRolls(ConstantValue.exactly(1))
                         .add(LootItem.lootTableItem(ModItems.RAW_FROG_MEAT)
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F))))
+                        .add(LootItem.lootTableItem(ModItems.VISCOSITY)
+                                .when(net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition.randomChance(0.2F)))
                 ));
+
+
 
 
 
@@ -40,6 +44,15 @@ public class EntityLootTable extends EntityLootSubProvider {
                         .add(LootItem.lootTableItem(Items.ROTTEN_FLESH)
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F))))
                 ));
+
+
+        this.add(ModEntities.TROPICAL_FROGLIN.get(), LootTable.lootTable()
+                .withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(ModItems.RAW_FROG_MEAT)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F))))
+                ));
+
 
     }
 

@@ -18,6 +18,9 @@ public class FroglinRender  extends MobRenderer<AbstractFroglin, FroglinModel<Ab
     private static final ResourceLocation warm =  ResourceLocation.fromNamespaceAndPath(Froglins.MODID, "textures/entity/froglin/cold_froglin.png");
     private static final ResourceLocation cold =  ResourceLocation.fromNamespaceAndPath(Froglins.MODID, "textures/entity/froglin/warm_froglin.png");
 
+
+
+
     public FroglinRender(EntityRendererProvider.Context context, FroglinModel model, float shadowRadius) {
         super(context, model, shadowRadius);
     }

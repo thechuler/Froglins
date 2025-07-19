@@ -22,7 +22,7 @@ public class CreativeTab {
     //Toma los registros de la clase ModItems  y los agrega automaticamente a la pestaña principal del mod
     public static final Supplier<CreativeModeTab> MAIN_TAB = CREATIVE_TABS.register("main_tab",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(Items.DIAMOND))
-                    .title(Component.translatable("creativetab.main_tab"))
+                    .title(Component.translatable("creativetab.froglins"))
                     .displayItems((pParameters, pOutput) -> {
                         for (int i = 0; i < ModItems.ITEMS.getEntries().size(); i++) {
                             pOutput.accept(ModItems.ITEMS.getEntries().stream().toList().get(i).get().asItem());

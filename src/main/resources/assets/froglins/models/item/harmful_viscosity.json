@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "froglins:item/harmful_viscosity",
+    "layer1": "froglins:item/harmful_viscosity_layer",
+    "layer2": "froglins:item/harmful_viscosity_detail"
+  }
+}

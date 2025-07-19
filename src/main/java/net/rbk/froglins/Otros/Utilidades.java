@@ -1,4 +1,4 @@
-package net.rbk.froglins;
+package net.rbk.froglins.Otros;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
@@ -167,11 +167,21 @@ public class Utilidades {
         }
     }
 
+    /**Devuelve un Booleano en base a si es o no de noche IN GAME
+     *
+     * @param level El nivel en cuestion a controlar
+     * @return
+     */
+
+    public static boolean EsDeNoche(Level level){
+        long time = level.getDayTime() % 24000L;
+        return time >= 13000 && time <= 23000; // De noche
+    }
 
 
 
-
-
-
+    public static float lerp(float a, float b, float t) {
+        return a + (b - a) * t;
+    }
 
 }

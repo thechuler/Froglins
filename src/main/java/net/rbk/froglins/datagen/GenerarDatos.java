@@ -25,6 +25,6 @@ public class GenerarDatos {
         generator.addProvider(event.includeClient(), new DGItemModel(packOutput, existingFileHelper));
         generator.addProvider(event.includeServer(), new DGDatapack(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new DGLootTable(packOutput, lookupProvider));
-
+        generator.addProvider(event.includeServer(), new DGRecetas(packOutput, lookupProvider));
     }
 }

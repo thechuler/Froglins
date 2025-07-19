@@ -26,7 +26,7 @@ public abstract class AbstractFroglin extends Animal {
     public static final EntityDataAccessor<Boolean> ATACAR = SynchedEntityData.defineId(AbstractFroglin.class, EntityDataSerializers.BOOLEAN);
 
 
-
+    public boolean activarChase = true;
     public final AnimationState idleAnimationState = new AnimationState();
     public final AnimationState attackAnimationState = new AnimationState();
     public final AnimationState gruñirAnimationState = new AnimationState();
@@ -65,7 +65,6 @@ public abstract class AbstractFroglin extends Animal {
 
 
 
-
     @Override
     protected void defineSynchedData(SynchedEntityData.@NotNull Builder builder) {
         super.defineSynchedData(builder);
@@ -96,7 +95,7 @@ public abstract class AbstractFroglin extends Animal {
             ManageRugido();
            ManageAtaque();
         } else {
-            boolean shouldAttack = this.getTarget() != null && this.distanceTo(this.getTarget()) < 5.5F;
+            boolean shouldAttack = this.getTarget() != null && this.distanceTo(this.getTarget()) < 6F && activarChase;
 
             if (shouldAttack != getData(ATACAR)) {
                 setData(ATACAR, shouldAttack);
