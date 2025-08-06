@@ -2,6 +2,7 @@ package net.rbk.froglins.Entidades.Entity;
 
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.BlockTags;
@@ -13,10 +14,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.BreakDoorGoal;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
@@ -33,6 +31,7 @@ import net.rbk.froglins.Sonidos.ModSounds;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Objects;
 
 public class ZombieFroglin extends AbstractFroglin implements Enemy {
@@ -56,14 +55,22 @@ public class ZombieFroglin extends AbstractFroglin implements Enemy {
 
 
 
+
+    @Override
+    protected boolean isSunBurnTick() {
+        return super.isSunBurnTick();
+    }
+
     @Override
     protected void registerGoals() {
+        this.goalSelector.addGoal(1,new FleeSunGoal(this,0.4));
         this.goalSelector.addGoal(1,new FloatGoal(this));
         this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setAlertOthers());
         this.goalSelector.addGoal(2,new MeleeAttackGoal(this,1,true));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, LivingEntity.class, false, (entity) -> !(entity instanceof ZombieFroglin) && !(entity instanceof WaterAnimal)));
         this.goalSelector.addGoal(4, new BreakDoorGoal(this, difficulty -> difficulty == Difficulty.NORMAL || difficulty == Difficulty.HARD  ));
         this.goalSelector.addGoal(8, new RandomStrollGoal(this, 0.6));
+
     }
 
 
@@ -86,8 +93,11 @@ public class ZombieFroglin extends AbstractFroglin implements Enemy {
     @Override
     public void tick() {
         rageOnNight();
-        this.level().isDay();
+      //  this.level().isDay();
 
+        if(isSunBurnTick()){
+            this.igniteForSeconds(5);
+        }
         super.tick();
     }
 
@@ -120,6 +130,11 @@ public class ZombieFroglin extends AbstractFroglin implements Enemy {
     @Override
     public SoundEvent GetRugidoSound() {
         return ModSounds.ZOMBIE_FROGLIN_AMBIENT.get();
+    }
+
+    @Override
+    public List<ResourceLocation> getVariantTextures() {
+        return List.of();
     }
 
     @Override
@@ -166,4 +181,5 @@ public class ZombieFroglin extends AbstractFroglin implements Enemy {
         boolean flag = MobSpawnType.ignoresLightRequirements(spawnType) || level.dayTime() % 24000L >= 13000 && level.dayTime() % 24000L <= 13000 ;
         return level.getBlockState(pos.below()).is(BlockTags.ANIMALS_SPAWNABLE_ON) && flag;
     }
+
 }

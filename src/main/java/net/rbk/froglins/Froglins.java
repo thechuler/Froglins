@@ -3,11 +3,9 @@ package net.rbk.froglins;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.rbk.froglins.DataComponent.ModDataComponent;
 import net.rbk.froglins.Efectos.ModEffects;
-import net.rbk.froglins.Entidades.Entity.WoollyFroglin;
+import net.rbk.froglins.Entidades.Entity.Froglin;
 import net.rbk.froglins.Entidades.ModEntities;
-import net.rbk.froglins.Entidades.Modelos.FroglinModel;
-import net.rbk.froglins.Entidades.Modelos.TropicalFroglinModel;
-import net.rbk.froglins.Entidades.Modelos.WoollyFroglinModel;
+import net.rbk.froglins.Entidades.Modelos.*;
 import net.rbk.froglins.Entidades.Renders.*;
 import net.rbk.froglins.Item.CreativeTab;
 import net.rbk.froglins.Item.ModItems;
@@ -35,7 +33,10 @@ public class Froglins {
 
     public static final String MODID = "froglins";
 
+
+
     private static final Logger LOGGER = LogUtils.getLogger();
+
 
 
     public Froglins(IEventBus modEventBus, ModContainer modContainer) {
@@ -79,6 +80,13 @@ public class Froglins {
             EntityRenderers.register(ModEntities.TROPICAL_FROGLIN.get(), context -> new TropicalFroglinRender(context, new TropicalFroglinModel<>(context.bakeLayer(FroglinModel.LAYER_LOCATION)), 0.5f));
             EntityRenderers.register(ModEntities.ZOMBIE_FROGLIN.get(), context -> new ZombieFroglinRender(context, new FroglinModel(context.bakeLayer(FroglinModel.LAYER_LOCATION)), 0.5f));
             EntityRenderers.register(ModEntities.WOOLLY_FROGLIN.get(), context -> new WoollyFroglinRender(context, new WoollyFroglinModel(context.bakeLayer(WoollyFroglinModel.LAYER_LOCATION)), 0.5f));
+            EntityRenderers.register(ModEntities.SCORCHED_FROGLIN.get(), context -> new ScorchedFroglinRender(context, new ScorchedFroglinModel(context.bakeLayer(ScorchedFroglinModel.LAYER_LOCATION)), 0.5f));
+            EntityRenderers.register(ModEntities.GRAY_SHAMAN_FROGLIN.get(), context -> new ShamanFroglinRender(context, new ShamanFroglinModel<>(context.bakeLayer(ShamanFroglinModel.LAYER_LOCATION)), 0.5f));
+            EntityRenderers.register(ModEntities.SKELETON_FROGLIN.get(), context -> new SkeletonFroglinRender(context, new FroglinModel<>(context.bakeLayer(FroglinModel.LAYER_LOCATION)), 0.5f));
+            EntityRenderers.register(ModEntities.FROGRONK.get(), context -> new FrogronkRender(context, new FrogronkModel(context.bakeLayer(FrogronkModel.LAYER_LOCATION)), 0.5f));
+            EntityRenderers.register(ModEntities.GRAY_FROGLIN.get(), context -> new GrayFroglinRender(context, new GrayFroglinModel<>(context.bakeLayer(GrayFroglinModel.LAYER_LOCATION)), 0.5f));
+            EntityRenderers.register(ModEntities.GRAY_RIDER_FROGLIN.get(), context -> new GrayRiderFroglinRender(context, new GrayRiderModel<>(context.bakeLayer(GrayRiderModel.LAYER_LOCATION)), 0.5f));
+
 
             EntityRenderers.register(ModEntities.VISCOSITY_PROJECTILE.get(), ViscosityProjectileRenderer::new);
 

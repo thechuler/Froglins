@@ -4,20 +4,22 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.entity.AnimationState;
-import net.minecraft.world.entity.EntityType;
 
-import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.*;
+
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
+
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public abstract class AbstractFroglin extends Animal {
 
@@ -27,6 +29,7 @@ public abstract class AbstractFroglin extends Animal {
 
 
     public boolean activarChase = true;
+    public final AnimationState deathAnimationState = new AnimationState();
     public final AnimationState idleAnimationState = new AnimationState();
     public final AnimationState attackAnimationState = new AnimationState();
     public final AnimationState gruñirAnimationState = new AnimationState();
@@ -84,6 +87,17 @@ public abstract class AbstractFroglin extends Animal {
 
 
 
+    //-------------Atributos Base---------------
+    public static AttributeSupplier.Builder createBaseAttributes() {
+        return Mob.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 10.0)
+                .add(Attributes.MOVEMENT_SPEED, 0.3)
+                .add(Attributes.ATTACK_DAMAGE, 4.5)
+                .add(Attributes.FOLLOW_RANGE, 20)
+                .add(Attributes.STEP_HEIGHT, 1.5);
+
+    }
+
 
 
 
@@ -133,7 +147,7 @@ public abstract class AbstractFroglin extends Animal {
             if(this.level().isClientSide()){
                 setData(RUGIR,false);
                 this.rugidoAnimationTimeout = 60;
-                this.gruñirAnimationState.start(this.tickCount);
+                 this.gruñirAnimationState.start(this.tickCount);
                     this.level().playLocalSound(this.blockPosition(),GetRugidoSound(), SoundSource.NEUTRAL,this.getSoundVolume(),this.getVoicePitch(),false);
             }
         }else{
@@ -145,6 +159,29 @@ public abstract class AbstractFroglin extends Animal {
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @Override
+    public void die(@NotNull DamageSource damageSource) {
+        if (this.level().isClientSide()) {
+            this.deathAnimationState.start(this.tickCount);
+        }
+
+       super.die(damageSource);
+    }
 
 
     //Setup Estados Animacion
@@ -160,9 +197,7 @@ public abstract class AbstractFroglin extends Animal {
 
 
 
-    public SoundEvent GetRugidoSound (){
-        return null;
-    }
+    public abstract SoundEvent GetRugidoSound();
 
     @Nullable
     @Override
@@ -171,7 +206,7 @@ public abstract class AbstractFroglin extends Animal {
         return null;
     }
 
-
+    public abstract List<ResourceLocation> getVariantTextures();
 
 
 

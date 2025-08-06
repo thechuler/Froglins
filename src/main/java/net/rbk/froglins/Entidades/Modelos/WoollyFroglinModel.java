@@ -10,6 +10,7 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.rbk.froglins.Entidades.Animaciones.FroglinAnimaciones;
+import net.rbk.froglins.Entidades.Animaciones.WollyFroglinAnimaciones;
 import net.rbk.froglins.Entidades.Entity.AbstractFroglin;
 import net.rbk.froglins.Entidades.Entity.WoollyFroglin;
 
@@ -70,5 +71,7 @@ public class WoollyFroglinModel<T extends WoollyFroglin> extends HierarchicalMod
         this.animate(((AbstractFroglin) t).idleAnimationState, FroglinAnimaciones.IDLE, v2, 1f);
         this.animate(((AbstractFroglin) t).gruñirAnimationState, FroglinAnimaciones.GRUÑIDO, v2, 1f);
         this.animate(((AbstractFroglin) t).attackAnimationState, FroglinAnimaciones.ATTACK, v2, 1f);
+        this.animate(((AbstractFroglin) t).deathAnimationState, FroglinAnimaciones.DEATH, v2, 1f);
+        this.animate(((WoollyFroglin) t).chargeAnimationState, WollyFroglinAnimaciones.CHARGE, v2, 1f);
     }}
 

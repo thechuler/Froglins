@@ -34,6 +34,8 @@ public class ModSounds {
 
     public static final Supplier<SoundEvent> WOOLLY_FROGLIN_AMBIENT = registerSoundEvent("woolly_froglin_ambient");
 
+    public static final Supplier<SoundEvent> TROPICAL_FROGLIN_AMBIENT = registerSoundEvent("tropical_froglin_ambient");
+
 
 
 

@@ -21,11 +21,16 @@ public class DGItemModel extends ItemModelProvider {
         basicItem(ModItems.VISCOSITY.get());
         basicItem(ModItems.HEAVY_HORN.get());
         basicItem(ModItems.TROPICAL_EYE.get());
-        basicItem(ModItems.DISCODELPAPU.get());
+        basicItem(ModItems.FROGLIN_MILK_BUCKET.get());
+
+       // basicItem(ModItems.DISCODELPAPU.get());
         withExistingParent(ModItems.FROGLIN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.ZOMBIE_FROGLIN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.TROPICAL_FROGLIN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.WOOLLY_FROGLIN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.SCORCHED_FROLING_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.GRAY_SHAMAN_FROGLIN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.GRAY_FROGLIN_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
     }
     }
 

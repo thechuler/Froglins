@@ -28,6 +28,12 @@
     ]
   },
 
+  "tropical_froglin_ambient": {
+    "subtitles": "sounds.froglins.tropical_froglin_ambient",
+    "sounds":[
+      "froglins:tropical_froglin_ambient1"
+    ]
+  },
 
 
   "zombie_froglin_ambient": {

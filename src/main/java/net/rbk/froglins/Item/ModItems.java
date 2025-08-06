@@ -46,6 +46,12 @@ public class ModItems {
             () -> new Viscosity(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
 
 
+    public static final DeferredItem<Item> FROGLIN_MILK_BUCKET = ITEMS.register("froglin_milk_bucket",
+            () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON)));
+
+
+
+
     public static final DeferredItem<Item> HEAVY_HORN = ITEMS.register("heavy_horn",
             () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
@@ -58,10 +64,10 @@ public class ModItems {
             () -> new Crusher(Tiers.DIAMOND, new Item.Properties().rarity(Rarity.UNCOMMON)
                     .attributes(PickaxeItem.createAttributes(Tiers.DIAMOND, 7F, -3.5f))));
 
-
+/*
     public static final DeferredItem<Item> DISCODELPAPU = ITEMS.register("discodelpapu",
             () -> new Item(new Item.Properties().jukeboxPlayable(ModSounds.YSYA_KEY).stacksTo(64).food(new FoodProperties.Builder().nutrition(10).saturationModifier(8).build())));
-
+*/
 
     public static final DeferredItem<Item> TROPICAL_FROGLIN_SPAWN_EGG = ITEMS.register("tropical_froglin_spawn_egg",
             () -> new DeferredSpawnEggItem(ModEntities.TROPICAL_FROGLIN, 0xf68b23, 0xf8e9c5, new Item.Properties()));
@@ -75,8 +81,19 @@ public class ModItems {
             () -> new DeferredSpawnEggItem(ModEntities.ZOMBIE_FROGLIN, 0x26421d, 0xbabd58, new Item.Properties()));
 
 
-    public static final DeferredItem<Item> WOOLLY_FROGLIN_SPAWN_EGG = ITEMS.register("wolly_froglin_spawn_egg",
+    public static final DeferredItem<Item> WOOLLY_FROGLIN_SPAWN_EGG = ITEMS.register("woolly_froglin_spawn_egg",
             () -> new DeferredSpawnEggItem(ModEntities.WOOLLY_FROGLIN, 0x583D29, 0x2B353F, new Item.Properties()));
+
+    public static final DeferredItem<Item> SCORCHED_FROLING_SPAWN_EGG = ITEMS.register("scorched_froglin_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.SCORCHED_FROGLIN, 0x450401, 0xffe000, new Item.Properties()));
+
+    public static final DeferredItem<Item> GRAY_SHAMAN_FROGLIN_SPAWN_EGG = ITEMS.register("gray_shaman_froglin_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.GRAY_SHAMAN_FROGLIN, 0x5a5a5a, 0xb847ca, new Item.Properties()));
+
+
+    public static final DeferredItem<Item> GRAY_FROGLIN_SPAWN_EGG = ITEMS.register("gray_froglin_spawn_egg",
+            () -> new DeferredSpawnEggItem(ModEntities.GRAY_FROGLIN, 0x5a5a5a, 0xb847ca, new Item.Properties()));
+
 
 
 

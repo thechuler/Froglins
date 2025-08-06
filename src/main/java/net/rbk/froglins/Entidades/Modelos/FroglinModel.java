@@ -21,7 +21,7 @@ public class FroglinModel<T extends AbstractFroglin> extends HierarchicalModel<T
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Froglins.MODID, "froglin"), "main");
 	private final ModelPart root;
 	private final ModelPart BrazoIzq;
-	private final ModelPart BrazoDer;
+	public final ModelPart BrazoDer;
 	private final ModelPart PiernaDer;
 	private final ModelPart PiernaIzq;
 	private final ModelPart Cabeza;
@@ -78,6 +78,7 @@ public class FroglinModel<T extends AbstractFroglin> extends HierarchicalModel<T
 	public void setupAnim(T t, float v, float v1, float v2, float v3, float v4) {
 		this.root().getAllParts().forEach(ModelPart::resetPose);
 		this.animateWalk(FroglinAnimaciones.CAMINAR, v, v1, 4f, 2.5f);
+		this.animate(((AbstractFroglin) t).deathAnimationState, FroglinAnimaciones.DEATH, v2, 1f);
 		this.animate(((AbstractFroglin) t).idleAnimationState, FroglinAnimaciones.IDLE, v2, 1f);
 		this.animate(((AbstractFroglin) t).gruñirAnimationState, FroglinAnimaciones.GRUÑIDO, v2, 1f);
 		this.animate(((AbstractFroglin) t).attackAnimationState, FroglinAnimaciones.ATTACK, v2, 1f);

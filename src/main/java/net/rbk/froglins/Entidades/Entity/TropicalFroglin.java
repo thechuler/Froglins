@@ -3,6 +3,7 @@ package net.rbk.froglins.Entidades.Entity;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.damagesource.DamageSource;
@@ -28,6 +29,8 @@ import net.minecraft.world.level.Level;
 import net.rbk.froglins.Sonidos.ModSounds;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class TropicalFroglin extends AbstractFroglin{
     public TropicalFroglin(EntityType<? extends Animal> entityType, Level level) {
@@ -172,7 +175,12 @@ public class TropicalFroglin extends AbstractFroglin{
     //--------------------------------------SONIDOS---------------------//
     @Override
     public SoundEvent GetRugidoSound() {
-        return ModSounds.FROGLIN_AMBIENT.get();
+        return ModSounds.TROPICAL_FROGLIN_AMBIENT.get();
+    }
+
+    @Override
+    public List<ResourceLocation> getVariantTextures() {
+        return List.of();
     }
 
     @Override

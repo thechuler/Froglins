@@ -16,9 +16,6 @@ public class WoollyFroglinRender extends MobRenderer<WoollyFroglin, WoollyFrogli
         super(context, model, shadowRadius);
     }
 
-    private static final ResourceLocation textura =  ResourceLocation.fromNamespaceAndPath(Froglins.MODID, "textures/entity/woolly_froglin/woolly_froglin.png");
-    private static final ResourceLocation textura2 =  ResourceLocation.fromNamespaceAndPath(Froglins.MODID, "textures/entity/woolly_froglin/woolly_froglin2.png");
-    private static final ResourceLocation textura3 =  ResourceLocation.fromNamespaceAndPath(Froglins.MODID, "textures/entity/woolly_froglin/woolly_froglin3.png");
 
 
     @Override
@@ -38,14 +35,14 @@ public class WoollyFroglinRender extends MobRenderer<WoollyFroglin, WoollyFrogli
     public ResourceLocation getTextureLocation(WoollyFroglin woollyFroglin) {
             switch (woollyFroglin.getVariante()){
                 case 0:
-                    return textura;
+                    return woollyFroglin.getVariantTextures().get(0);
                 case 1:
-                    return textura2;
+                    return woollyFroglin.getVariantTextures().get(1);
                 case 2:
-                    return textura3;
+                    return woollyFroglin.getVariantTextures().get(2);
             }
 
-        return textura;
+        return woollyFroglin.getVariantTextures().get(0);
     }
 
 

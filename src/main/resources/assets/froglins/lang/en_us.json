@@ -7,13 +7,37 @@
   "item.froglins.raw_frog_brochette": "Raw Frog Brochette",
   "item.froglins.cooked_frog_brochette": "Cooked Frog Brochette",
   "item.froglins.heavy_horn": "Heavy Horn",
+   "item.froglins.froglin_milk_bucket": "Froglin Milk Bucket",
+  "item.froglins.crusher": "Crusher",
+  "item.froglins.tropical_eye": "Tropical Eye",
+
 
 
   "entity.froglins.zombie_froglin": "Zombie Froglin",
   "entity.froglins.froglin": "Froglin",
+  "entity.froglins.woolly_froglin": "Woolly Froglin",
+  "entity.froglins.tropical_froglin": "Tropical Froglin",
+
+
+
+
+
+  "tooltip.froglins.harmful_viscosity": "Mixed with:",
+
+  "effect.froglins.infection": "Infection",
+
   "item.froglins.zombie_froglin_spawn_egg": "Zombie Froglin Spawn Egg",
   "item.froglins.froglin_spawn_egg": "Froglin Spawn Egg",
-  "item.froglins.crusher": "Crusher",
-  "tooltip.froglins.harmful_viscosity": "Mixed with:"
+  "item.froglins.woolly_froglin_spawn_egg": "Woolly Froglin Spawn Egg",
+  "item.froglins.tropical_froglin_spawn_egg": "Tropical Froglin Spawn Egg",
+
+
+
+
+
+  "death.attack.woolly_froglin_crush": "%1$s has been crushed by a woolly froglin"
+
+
+
 
 }
